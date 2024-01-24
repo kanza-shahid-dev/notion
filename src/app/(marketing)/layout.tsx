@@ -1,12 +1,51 @@
-import Navbar from "./_components/navbar";
+import type { Metadata } from "next";
+import { Inter } from "next/font/google";
+import "../../globals.css";
+import { ConvexClientProvider } from "@/components/providers/convex-provider";
+import { ThemeProvider } from "@/components/providers/theme-provider";
 
-const MarketingLayout = ({ children }: { children: React.ReactNode }) => {
-  return (
-    <div className="h-full dark:bg-[#1F1F1F]">
-      <Navbar />
-      <main className="h-full pt-40">{children}</main>
-    </div>
-  );
+const inter = Inter({ subsets: ["latin"] });
+
+export const metadata: Metadata = {
+  title: "Jotion",
+  description: "Workspace for Jotion",
+  //array of light and dark icon in metadata
+  icons: {
+    icon: [
+      {
+        media: "(prefers-color-scheme: light)",
+        url: "/logo.svg",
+        href: "/logo.svg",
+      },
+      {
+        media: "(prefers-color-scheme: dark)",
+        url: "/logo-dark.svg",
+        href: "/logo-dark.svg",
+      },
+    ],
+  },
 };
 
-export default MarketingLayout;
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en" suppressHydrationWarning>
+      <body className={inter.className}>
+        <ConvexClientProvider>
+          <ThemeProvider
+            attribute="class"
+            defaultTheme="system"
+            enableSystem
+            disableTransitionOnChange
+            storageKey="jotion-theme-2"
+          >
+            {children}
+          </ThemeProvider>
+        </ConvexClientProvider>
+      </body>
+    </html>
+  );
+}
