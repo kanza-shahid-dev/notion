@@ -4,7 +4,7 @@ import { SignInButton, UserButton } from "@clerk/clerk-react";
 import { useConvexAuth } from "convex/react";
 import Link from "next/link";
 import React from "react";
-import { useScrollTop } from "../../../../hooks/use-scroll-top";
+import { useScrollTop } from "../../../../../hooks/use-scroll-top";
 import { cn } from "@/lib/utils";
 import { Logo } from "./logo";
 import { ModeToggle } from "@/components/mode-toggle";
