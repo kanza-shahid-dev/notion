@@ -7,6 +7,7 @@ import React from "react";
 import { useScrollTop } from "../../../../hooks/use-scroll-top";
 import { cn } from "@/lib/utils";
 import { Logo } from "./logo";
+import { ModeToggle } from "@/components/mode-toggle";
 
 export default function Navbar() {
   const { isAuthenticated, isLoading } = useConvexAuth();
@@ -38,6 +39,7 @@ export default function Navbar() {
             <UserButton afterSignOutUrl="/" />
           </>
         )}
+        <ModeToggle />
       </div>
     </div>
   );
